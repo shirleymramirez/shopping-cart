@@ -1,34 +1,30 @@
-import React  from "react";
+import React from 'react';
 
-const AddItem =( { products, handler } ) => {
-    // let productList = products.map(productItem => <Product key={productItem.id} cartItem={productItem} />)
-    return (
-        <form onSubmit = { e => {
-           
-        }}>
-            <label>Total Price: <span></span></label>
-            <div class="form-group">
-                <p>
-                    <label htmlFor="productsQuantity">Quantity </label>
-                    <input class="form-control" 
-                        name="quantity"
-                        onChange = { handler }
-                    />
-                </p>
+class AddItem extends React.Component {
+    render() {
+        return (
+            <div className="container">
+                <form onSubmit={this.props.onSubmit}>
+                    <label>Total Price: <span></span></label>
+                    <div className="form-group">
+                        <p>
+                            <label htmlFor="productsQuantity">Quantity </label>
+                            <input className="form-control" name="quantity"></input>
+                        </p>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="productsOption">Products</label>
+                        <select className="form-control" name="product">
+                            {this.props.products.map(item => (
+                                <option key={item.id}>{item.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <button type="button" className="btn btn-primary">Submit</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1" htmlFor="productsOption">Products</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Select an option...</option>
-                    <option>{products}</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <button type="button" class="btn btn-primary">Submit</button>
-        </form>
-    )
+        )
+    }
 }
 
 export default AddItem;

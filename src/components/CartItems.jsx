@@ -1,9 +1,8 @@
 import React from "react";
 import CartItem from './CartItem';
-import AddItem from './AddItem';
 
-const CartItems = ( {cartItemsList} ) => {
-    let itemList = cartItemsList.map(cartItem => <CartItem key={cartItem.id } cartItem={ cartItem } />)
+const CartItems = ( props ) => {
+    let itemList = props.cartItemsList.map(cartItem => <CartItem key={cartItem.id } cartItem={ cartItem } />)
     return (
         <div className="container">
             <h1>Cart Items</h1>
@@ -16,7 +15,6 @@ const CartItems = ( {cartItemsList} ) => {
                     </div>
                 </div>
                 { itemList }
-                <AddItem />
             </div>
         </div>
     )

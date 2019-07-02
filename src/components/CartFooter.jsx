@@ -1,9 +1,9 @@
 import React from "react";
 
-function CartFooter({copyright = '2016'}) {
+function CartFooter(props) {
     return (
         <nav className="navbar navbar-dark bg-dark">
-            <a className="navbar-brand" href="#">&copy; {copyright} </a>
+            <a className="navbar-brand" href="#">&copy; {props.copyright} </a>
         </nav>
     )
 }

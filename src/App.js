@@ -6,9 +6,8 @@ import CartItems from './components/CartItems';
 import AddItem from './components/AddItem';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { products: [
+ 
+  state = { products: [
       { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 },
       { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 },
       { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 },
@@ -18,9 +17,13 @@ class App extends React.Component {
       { id: 46, name: 'Intelligent Leather Clock', priceInCents: 2999 },
       { id: 47, name: 'Ergonomic Bronze Lamp', priceInCents: 40000 },
       { id: 48, name: 'Awesome Leather Shoes', priceInCents: 3990 },
-    ]}
+    ]
   }
 
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ products: e.target.value })
+  }
 
   render() {
     const cartItemsList = [
@@ -30,11 +33,12 @@ class App extends React.Component {
     ]
 
     return (
-      <>
+      <div className="container">
         <CartHeader />
         <CartItems cartItemsList={cartItemsList} /> 
-        <CartFooter />
-      </>
+        <AddItem products={this.state.products} onSubmit={this.onSubmit} />
+        <CartFooter copyright='2016'/>
+      </div>
     );
   }
 
