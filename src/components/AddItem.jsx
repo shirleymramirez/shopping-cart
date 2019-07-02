@@ -1,12 +1,11 @@
 import React from 'react';
 
 class AddItem extends React.Component {
-    
     render() {
         return (
             <div className="container">
                 <form onSubmit={this.props.onSubmit}>
-                    <label>Total Price: ${this.props.products.priceInCents}</label>
+                    <label>Total Price: ${this.props.totalPrice}</label>
                     <div className="form-group">
                         <p>
                             <label htmlFor="quantity">Quantity </label>

@@ -22,7 +22,8 @@ class App extends React.Component {
     cartItemsList: [
       { id: 1, product: { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 }, quantity: 1 },
       { id: 2, product: { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 }, quantity: 2 },
-      { id: 3, product: { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 }, quantity: 1 },]
+      { id: 3, product: { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 }, quantity: 1 },
+    ]
   }
 
   onSubmit = (e) => {
@@ -46,11 +47,14 @@ class App extends React.Component {
     this.setState({
       cartItemsList: this.state.cartItemsList.concat(newProduct)
     })
-
   }
 
 
   render() {
+    let totalPrice = 0;
+    this.state.cartItemsList.forEach(function (item) {
+      return totalPrice += item.quantity * item.product.priceInCents;
+    });
 
     return (
       <div className="container">
@@ -59,9 +63,9 @@ class App extends React.Component {
         <AddItem 
           products={this.state.products} 
           onSubmit={this.onSubmit} 
-          // totalPrice={totalPrice}
+          totalPrice={(totalPrice/100).toFixed(2)}
         />
-        <CartFooter copyright='2016'/>
+        <CartFooter copyright={2016}/>
       </div>
     );
   }
